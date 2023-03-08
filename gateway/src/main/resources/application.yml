@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+     name: gateway
+  cloud:
+    gateway:
+      routes:
+      - id: alfaModule
+        uri: lb://alfa-service
+        predicates:
+        - Path=/alfa/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+      
+logging:
+  level:
+    '[org.springframework.core.io.support]': DEBUG
+    '[org.springframework.context.annotation]': DEBUG            
